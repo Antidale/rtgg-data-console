@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>rtgg_data_tests</RootNamespace>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TUnit" Version="0.50.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../rtgg-data-console/rtgg-data-console.csproj" />
+  </ItemGroup>
+
+</Project>

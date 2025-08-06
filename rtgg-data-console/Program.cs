@@ -16,6 +16,9 @@ int pageSize = 100;
 
 try
 {
+
+    Console.WriteLine("hey");
+    return;
     //figure out how many calls it requires to pull at 100 races/call
     totalRaces = await rtggApi.GetTotalRacesCountAsync();
     var requiredPageCount = totalRaces / pageSize + (totalRaces % pageSize > 0 ? 1 : 0);
@@ -34,7 +37,7 @@ try
     var repository = new Repository(connectionProvider);
 
     // pull out all the User parts into a distinct list and insert them into races.racers
-    var userData = raceList.SelectMany(x => x.Entrants.Select(x => x.User)).Distinct();
+    var userData = raceList.SelectMany(x => x.Entrants.Select(x => x.User)).Distinct().Select(x => new { racetimeName = x.Name, racetimeId = x.Id, tiwtchName = x.TwitchDisplayName });
     foreach (var user in userData)
     {
         await repository.InsertAsync<int>(Queries.InsertRacerQuery, new { });

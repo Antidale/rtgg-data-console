@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="rtgg-data-console/rtgg-data-console.csproj" />
+  <Project Path="rtgg-data-tests/rtgg_data_tests.csproj" />
+</Solution>
