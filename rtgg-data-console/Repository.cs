@@ -16,6 +16,8 @@ public class Repository(ConnectionProvider connectionProvider)
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
+            Console.WriteLine($"query: {query}");
+            Console.WriteLine($"param: {param}");
             return new();
         }
     }
@@ -31,6 +33,8 @@ public class Repository(ConnectionProvider connectionProvider)
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
+            Console.WriteLine($"query: {query}");
+            Console.WriteLine($"param: {param}");
             return false;
         }
     }
@@ -45,7 +49,24 @@ public class Repository(ConnectionProvider connectionProvider)
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
+            Console.WriteLine($"query: {query}");
+            Console.WriteLine($"param: {param}");
             return default;
+        }
+    }
+
+    public async Task InsertAsync(string query, object param)
+    {
+        using var connection = connectionProvider.GetConnection();
+        try
+        {
+            await connection.ExecuteAsync(query, param);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine($"query: {query}");
+            Console.WriteLine($"param: {param}");
         }
     }
 
@@ -60,6 +81,8 @@ public class Repository(ConnectionProvider connectionProvider)
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
+            Console.WriteLine($"query: {query}");
+            Console.WriteLine($"param: {param}");
             return false;
         }
     }
