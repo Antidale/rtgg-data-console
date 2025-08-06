@@ -1,0 +1,100 @@
+{
+    "count": 247,
+    "num_pages": 247,
+    "races": [
+        {
+            "name": "ff4fe/superb-shiva-5627",
+            "status": {
+                "value": "finished",
+                "verbose_value": "Finished",
+                "help_text": "This race has been completed"
+            },
+            "url": "/ff4fe/superb-shiva-5627",
+            "data_url": "/ff4fe/superb-shiva-5627/data",
+            "goal": {
+                "name": "All Forked Cup team tournament",
+                "custom": false
+            },
+            "info": "All Forked Cup Brackets Finals - Game 1 - Infinious vs. Engidave\nhttps://ff4fe.galeswift.com/get?id=bBAYBAACQCn--IwAAGAEAAAAAAIADAAAU4QRAcQAAAQEAAAMAGhBgAACARABAAfAAHQxeVeEAAAMAAAAAAAAAACA.L9S8IK9CLI\nStar/Star/Mini/Ring",
+            "entrants_count": 2,
+            "entrants_count_finished": 2,
+            "entrants_count_inactive": 0,
+            "opened_at": "2025-08-03T00:12:34.963Z",
+            "started_at": "2025-08-03T01:00:59.725Z",
+            "time_limit": "P1DT00H00M00S",
+            "opened_by_bot": "Racingway",
+            "entrants": [
+                {
+                    "user": {
+                        "id": "7QXz83KAaaWeZDjr",
+                        "full_name": "Engidave#8708",
+                        "name": "Engidave",
+                        "discriminator": "8708",
+                        "url": "/user/7QXz83KAaaWeZDjr/engidave",
+                        "avatar": null,
+                        "pronouns": "he/him",
+                        "flair": "",
+                        "twitch_name": "engidave",
+                        "twitch_display_name": "EngiDave",
+                        "twitch_channel": "https://www.twitch.tv/engidave",
+                        "can_moderate": false
+                    },
+                    "team": null,
+                    "status": {
+                        "value": "done",
+                        "verbose_value": "Finished",
+                        "help_text": "Finished the race."
+                    },
+                    "finish_time": "P0DT01H13M42.041393S",
+                    "finished_at": "2025-08-03T02:14:41.767Z",
+                    "place": 1,
+                    "place_ordinal": "1st",
+                    "score": 1729,
+                    "score_change": 199,
+                    "comment": null,
+                    "has_comment": false,
+                    "stream_live": true,
+                    "stream_override": false,
+                    "actions": []
+                },
+                {
+                    "user": {
+                        "id": "JrM6PoY5bkoRdm5v",
+                        "full_name": "Infinious#7340",
+                        "name": "Infinious",
+                        "discriminator": "7340",
+                        "url": "/user/JrM6PoY5bkoRdm5v/infinious",
+                        "avatar": null,
+                        "pronouns": null,
+                        "flair": "",
+                        "twitch_name": "judge_infinious",
+                        "twitch_display_name": "Judge_Infinious",
+                        "twitch_channel": "https://www.twitch.tv/judge_infinious",
+                        "can_moderate": false
+                    },
+                    "team": null,
+                    "status": {
+                        "value": "done",
+                        "verbose_value": "Finished",
+                        "help_text": "Finished the race."
+                    },
+                    "finish_time": "P0DT01H27M01.943401S",
+                    "finished_at": "2025-08-03T02:28:01.669Z",
+                    "place": 2,
+                    "place_ordinal": "2nd",
+                    "score": 1427,
+                    "score_change": -101,
+                    "comment": null,
+                    "has_comment": false,
+                    "stream_live": true,
+                    "stream_override": false,
+                    "actions": []
+                }
+            ],
+            "ended_at": "2025-08-03T02:28:01.737Z",
+            "cancelled_at": null,
+            "recordable": true,
+            "recorded": true
+        }
+    ]
+}
