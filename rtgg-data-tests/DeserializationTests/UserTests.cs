@@ -18,16 +18,20 @@ public class UserTests
     "avatar": "https://test.org/media/zM65aWXa4bB1y8q0.jpg",
     "pronouns": "she/they",
     "flair": "",
-    "twitch_name": "testuser",
-    "twitch_display_name": "TestUser",
+    "twitch_name": "testusertwitch",
+    "twitch_display_name": "TestUserTwitch",
     "twitch_channel": "https://www.twitch.tv/testuser",
     "can_moderate": true
 }
 """;
+        //use the Web setting because the main project is always using `ReadFromJsonAsync` which uses that option
+        var user = JsonSerializer.Deserialize<User>(jsonString, JsonSerializerOptions.Web);
 
-        var user = JsonSerializer.Deserialize<User>(jsonString);
-
-        await Assert.That(user).IsNotNull();
-        await Assert.That(user.CanModerate).IsTrue();
+        await Assert
+            .That(user).IsNotNull()
+            .And.HasMember(x => x.Name).EqualTo("testuser")
+            .And.HasMember(x => x.Pronouns).EqualTo("she/they")
+            .And.HasMember(x => x.TwitchName).EqualTo("testusertwitch")
+            .And.HasMember(x => x.TwitchDisplayName).EqualTo("TestUserTwitch");
     }
 }
