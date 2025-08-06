@@ -17,12 +17,9 @@ int pageSize = 100;
 try
 {
 
-    Console.WriteLine("hey");
-    return;
     //figure out how many calls it requires to pull at 100 races/call
     totalRaces = await rtggApi.GetTotalRacesCountAsync();
     var requiredPageCount = totalRaces / pageSize + (totalRaces % pageSize > 0 ? 1 : 0);
-
 
     var raceList = new List<Race>(capacity: totalRaces);
 
@@ -43,26 +40,30 @@ try
         await repository.InsertAsync<int>(Queries.InsertRacerQuery, new { });
     }
 
-
-
     // looping through all the races
     foreach (var race in raceList)
     {
         // check to see if the race exists
-        var existingRace = await repository.GetAsync<(int id, string status)>(Queries.GetRaceStatusByRoomNameQuery, new { RoomName = race.Name.Split("/").Last() });
+        var existingRace = await repository.GetAsync<(int id, string status)>(
+            Queries.GetRaceStatusByRoomNameQuery,
+            new { RoomName = race.Name.Split("/").Last() }
+        );
 
-        //  if so: update the status to the correct status (but don't overwrite if I've already added a custom status)
         if (existingRace.id > 0)
         {
             if (string.IsNullOrEmpty(existingRace.status))
             {
-                await repository.UpdateAsync(Queries.UpdateRaceStatusQuery, new { });
+                await repository.UpdateAsync(
+                    Queries.UpdateRaceStatusQuery,
+                    new { existingRace.id, status = race.Status.Value }
+                );
             }
         }
-        //  if not: insert the race
         else
         {
-            var id = await repository.InsertAsync<int>(Queries.InsertRaceQuery, new { });
+            var id = await repository.InsertAsync<int>(
+                Queries.InsertRaceQuery, new { }
+            );
         }
 
 

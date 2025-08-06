@@ -10,6 +10,10 @@ public class ConnectionProvider
     public ConnectionProvider()
     {
         _connectionString = Environment.GetEnvironmentVariable("FeDb_ConnectionString") ?? "";
+        if (string.IsNullOrEmpty(_connectionString))
+        {
+            throw new ArgumentException($"{nameof(_connectionString)} is null or empty. Cannot proceed");
+        }
     }
 
     public IDbConnection GetConnection()

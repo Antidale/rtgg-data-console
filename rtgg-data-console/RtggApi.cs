@@ -61,9 +61,7 @@ public class RtggApi
     {
         try
         {
-            var queryString = QueryString(page: page, perPage: perPage);
-            Console.WriteLine(queryString);
-            var response = await _httpClient.GetAsync(queryString);
+            var response = await _httpClient.GetAsync(QueryString(page: page, perPage: perPage));
             response.EnsureSuccessStatusCode();
             return response;
         }
