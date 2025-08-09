@@ -22,8 +22,8 @@ limit 1
     /// <summary>
     /// Inserts data in to races.race_detail. use roomName, raceType, raceHost, and metadata in params object
     /// </summary>
-    public const string InsertRaceQuery = @"insert into races.race_detail(room_name, race_type, race_host, metadata)
-values(@roomName, 'FFA', 'Racetime.gg', @metadata)
+    public const string InsertRaceQuery = @"insert into races.race_detail(room_name, race_type, race_host, metadata, ended_at)
+values(@roomName, 'FFA', 'Racetime.gg', @metadata, @endedAt)
 returning id";
 
     /// <summary>
@@ -31,6 +31,12 @@ returning id";
     /// </summary>
     public const string UpdateRaceStatusQuery = @"update races.race_detail
     set metadata['Status'] = to_jsonb(@status ::text)
+        , metadata['EntrantsCount'] = to_jsonb(@entrantsCount ::text)
+    where id = @id";
+
+    public const string UpdateRaceEndedAtQuery = @"update races.race_detail
+    set ended_at = @endedAt
+        , metadata['EntrantsCount'] = to_jsonb(@entrantsCount ::text)
     where id = @id";
 
     /// <summary>

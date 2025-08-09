@@ -59,23 +59,29 @@ foreach (var race in raceList)
         {
             await repository.UpdateAsync(
                 Queries.UpdateRaceStatusQuery,
-                new { id, status = race.Status.Value }
+                new { id, status = race.Status.Value, entrantsCount = race.EntrantsCount.ToString() }
             );
         }
+
+        await repository.UpdateAsync(
+            Queries.UpdateRaceEndedAtQuery,
+            new { id, endedAt = race.EndedAt, entrantsCount = race.EntrantsCount.ToString() }
+        );
     }
     else
     {
         var metaData = new Dictionary<string, string>
         {
             ["Goal"] = race.Goal.Name,
-            ["Description"] = race.Info
+            ["Description"] = race.Info,
+            ["EntrantsCount"] = race.EntrantsCount.ToString()
         };
 
         if (!string.IsNullOrWhiteSpace(race.Status.Value))
             metaData.Add("Status", race.Status.Value);
 
         id = await repository.InsertAsync<int>(
-            Queries.InsertRaceQuery, new { roomName, metaData }
+            Queries.InsertRaceQuery, new { roomName, metaData, race.EndedAt }
         );
     }
 
