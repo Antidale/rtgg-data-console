@@ -33,13 +33,13 @@ steps:
   displayName: 'Run tests and output .trx file'
   continueOnError: false
 
-# - task: PublishTestResults@2
-#   displayName: 'Publish Test Results from *.trx files'
-#   inputs:
-#     testResultsFormat: VSTest
-#     testResultsFiles: '*.trx'
-#     searchFolder: '$(Agent.TempDirectory)'
-#     failTaskOnFailedTests: true
-#     failTaskOnMissingResultsFile: true
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results from *.trx files'
+  inputs:
+    testResultsFormat: VSTest
+    testResultsFiles: '*.trx'
+    searchFolder: '$(Agent.TempDirectory)'
+    failTaskOnFailedTests: true
+    failTaskOnMissingResultsFile: true
 
 
