@@ -1,0 +1,45 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  batch: 'true'
+  branches:
+    include:
+    - develop
+    - main
+    - feature/*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: '9.x'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build $(buildConfiguration)'
+  inputs:
+    command: 'build'
+    projects: rtgg-data-console/rtgg-data-console.csproj
+    arguments: '--configuration $(buildConfiguration)'
+
+- script: dotnet run --project ./rtgg-data-tests/rtgg-data-tests.csproj -c Release --report-trx --results-directory . --report-trx-filename results.trx
+  displayName: 'Run tests and output .trx file'
+  continueOnError: false
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results from *.trx files'
+  inputs:
+    testResultsFormat: VSTest
+    testResultsFiles: 'results.trx'
+    searchFolder: '.'
+    failTaskOnFailedTests: true
+    failTaskOnMissingResultsFile: true
+
+
