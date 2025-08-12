@@ -29,7 +29,7 @@ steps:
     projects: rtgg-data-console/rtgg-data-console.csproj
     arguments: '--configuration $(buildConfiguration)'
 
-- script: dotnet test --no-build --configuration Release
+- script: dotnet test --c Release -- --report-trx
   displayName: 'Run tests and output .trx file'
   continueOnError: false
 
