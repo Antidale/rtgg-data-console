@@ -29,7 +29,7 @@ steps:
     projects: rtgg-data-console/rtgg-data-console.csproj
     arguments: '--configuration $(buildConfiguration)'
 
-- script: dotnet run --project ./rtgg-data-tests/rtgg-data-tests.csproj -c Release --report-trx --results-directory .
+- script: dotnet run --project ./rtgg-data-tests/rtgg-data-tests.csproj -c Release --report-trx --results-directory . --report-trx-filename results.trx
   displayName: 'Run tests and output .trx file'
   continueOnError: false
 
@@ -37,8 +37,8 @@ steps:
   displayName: 'Publish Test Results from *.trx files'
   inputs:
     testResultsFormat: VSTest
-    testResultsFiles: '*.trx'
-    searchFolder: '$(Agent.TempDirectory)'
+    testResultsFiles: 'results.trx'
+    searchFolder: '.'
     failTaskOnFailedTests: true
     failTaskOnMissingResultsFile: true
 
