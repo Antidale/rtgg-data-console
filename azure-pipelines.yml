@@ -37,7 +37,7 @@ steps:
   displayName: 'Publish Test Results from *.trx files'
   inputs:
     testResultsFormat: VSTest
-    testResultsFiles: '*.trx'
+    testResultsFiles: '**/TestResults/*.trx'
     searchFolder: '$(Agent.TempDirectory)'
     failTaskOnFailedTests: true
     failTaskOnMissingResultsFile: true
